@@ -14,4 +14,6 @@ export const contactUsData = {
     successSubmissionMessage: 'Success! Your details have been submitted successfully.'
 }
 
+
+
 export const arrCategories = ['WOMEN', 'MEN', 'KIDS'];

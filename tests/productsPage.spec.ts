@@ -20,4 +20,6 @@ test.describe("contact us page test", () => {
         expect(data).toEqual(arrCategories);
 
     });
-});    
+});   
+
+//add notification - TEST LINE!

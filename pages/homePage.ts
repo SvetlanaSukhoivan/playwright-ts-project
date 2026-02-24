@@ -1,12 +1,12 @@
-class HomePage {
-    page: any;
-    constructor( page: any ) {
-        this.page = page;
-    };
+import { Page } from "@playwright/test";
+import BasePage from "./basePage";
 
-    async loadHomePage() {
-        await this.page.goto('/');
+export default class HomePage extends BasePage {
+    constructor(page: Page) {
+        super(page);
+    } 
+
+    async loadHomePage(): Promise<void> {
+        await this.navigate('/');   // Используем метод из родителя или this.page.goto('/')
     }
 }
-
-export default HomePage;

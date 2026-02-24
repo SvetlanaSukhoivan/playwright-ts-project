@@ -4,34 +4,48 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+require("dotenv").config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  /* Added: Timeout due to VPN and waiting for pop-ups, 30 seconds (standard) may not be enough.*/
+  timeout: 60 * 10000,
+  /* Added: Timeout added for expect */
+  expect:{
+    timeout: 10000,
+  },
+
   use: {
     viewport: {width: 1920, height: 1080},
-    /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://www.automationexercise.com/',
+    baseURL: process.env.BASE_URL,
+    storageState: '.auth/storageState.json',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    testIdAttribute: 'data-qa',
+
+    /*Added: Stability settings for VPN: If the click does not go through within 15 seconds, 
+    the test will fail (instead of hanging indefinitely).*/
+    actionTimeout: 15000,
+
+    /*Added: Page load time (page.goto)*/
+    navigationTimeout: 30000,
+
+    screenshot: 'only-on-failure',
+    video: {
+      mode: 'retain-on-failure',
+      size: process.env.CI ? {width: 800, height: 600} : {width: 1440, height: 900}
+    }
   },
+
+  globalSetup: './global-setup.ts',
 
   /* Configure projects for major browsers */
   projects: [
@@ -39,42 +53,5 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });

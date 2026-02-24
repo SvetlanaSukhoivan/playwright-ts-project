@@ -1,18 +1,29 @@
-class ProductPage {
-    page: any;
-    constructor( page: any ) {
-        this.page = page;
-    };
+import { Page, Locator } from "@playwright/test";
+import BasePage from "./basePage";
 
-    locators = {
-        getCategories: () => this.page.locator('[data-parent="#accordian"]')
-    };
+export default class ProductPage extends BasePage {
+    public locators: {
+        getCategories: () => Locator;
+    }
 
-    async getCategoriesText() {
+
+    constructor(page: Page) {
+        super(page);
+
+        this.locators = {
+            getCategories: () => this.page.locator('[data-parent="#accordian"]')
+        };
+    }
+
+    async getCategoriesText(): Promise<string[]> {
         return await this.locators
             .getCategories()
             .allInnerTexts();
     }
 }
 
-export default ProductPage;
+// without add into construstor
+
+// locators = {
+//         getCategories: (): Locator => this.page.locator('[data-parent="#accordian"]')
+//     };

@@ -18,6 +18,6 @@ test.describe("products page test", () => {
         const data = await productPage.getCategoriesText();
 
         expect(data).toEqual(arrCategories);
+        
     });
 });   
-

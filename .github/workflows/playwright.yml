@@ -5,26 +5,23 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    - cron: '0 5 * * *'
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-jammy
+
     steps:
     - name: 📥 Checkout repository
       uses: actions/checkout@v4
 
-    - name: 🟢 Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-
     - name: 📦 Install dependencies
       run: npm ci
-
-    - name: 🎭 Install Playwright Browsers
-      run: npx playwright install --with-deps
 
     - name: 🚀 Run Playwright tests
       env:

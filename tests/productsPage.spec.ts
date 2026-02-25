@@ -4,7 +4,7 @@ import Header from '../pages/header';
 import HomePage from '../pages/homePage';
 import ProductPage from '../pages/productPage';
 
-test.describe("contact us page test", () => {
+test.describe("products page test", () => {
     test.beforeEach(async ({ page }) => {
         const homePage = new HomePage(page);
         await homePage.loadHomePage();
@@ -12,9 +12,9 @@ test.describe("contact us page test", () => {
 
     test('verify product categories', async ({ page }) => {
         const header = new Header(page);
-        header.clickProductLink();
 
-        const productPage = new ProductPage(page);
+        const productPage = await header.clickProductLink();
+
         const data = await productPage.getCategoriesText();
 
         expect(data).toEqual(arrCategories);
@@ -22,4 +22,3 @@ test.describe("contact us page test", () => {
     });
 });   
 
-//add notification - TEST LINE!

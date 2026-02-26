@@ -1,7 +1,5 @@
 # 🎭 Playwright E2E Automation Project
-
-# 🎭 Playwright E2E Automation Project
-
+git
 [![GitHub Actions Status](https://github.com/SvetlanaSukhoivan/playwright-ts-project/actions/workflows/playwright.yml/badge.svg)](https://github.com/SvetlanaSukhoivan/playwright-ts-project/actions)
 
 [![GitLab CI Status](https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project/badges/main/pipeline.svg)](https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project/-/commits/main)

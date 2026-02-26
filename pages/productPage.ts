@@ -6,7 +6,6 @@ export default class ProductPage extends BasePage {
         getCategories: () => Locator;
     }
 
-
     constructor(page: Page) {
         super(page);
 
@@ -21,9 +20,3 @@ export default class ProductPage extends BasePage {
             .allInnerTexts();
     }
 }
-
-// without add into construstor
-
-// locators = {
-//         getCategories: (): Locator => this.page.locator('[data-parent="#accordian"]')
-//     };

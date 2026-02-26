@@ -2,7 +2,6 @@ import { Page, Locator } from "@playwright/test";
 import BasePage from "./basePage";
 
 export default class ContactUsPage extends BasePage {
-    // Объявляем структуру объекта locators (для автокомплита)
     public locators: {
         getInputFieldName: () => Locator;
         getInputFieldEmail: () => Locator;
@@ -11,11 +10,9 @@ export default class ContactUsPage extends BasePage {
         getSuccessSubmissionMessage: () => Locator;
     };
 
-
     constructor(page: Page) {
         super(page);
 
-// Инициализация внутри конструктора. Это гарантирует, что this.page уже существует и корректен
         this.locators = {
             getInputFieldName: () => this.page.getByPlaceholder('Name'),
             getInputFieldEmail: () => this.page.getByTestId('email'),
@@ -40,7 +37,7 @@ export default class ContactUsPage extends BasePage {
         await this.locators.getInputFieldMessage().fill(message);
         return this;
     }
-    // Лучше использовать page.once, чтобы обработать алерт один раз перед кликом, который его вызывает
+
     async acceptConfirmationPopup(): Promise<this> {
         this.page.once('dialog', async (dialog) => {
             await dialog.accept();
@@ -55,12 +52,3 @@ export default class ContactUsPage extends BasePage {
         return this;
     }
 }
-
-// без добавления в конструктор 
-// locators = {
-//         getInputFieldName: (): Locator => this.page.getByPlaceholder('Name'),
-//         getInputFieldEmail: (): Locator => this.page.locator('input[data-qa="email"]'),
-//         getInputFieldMessage: (): Locator => this.page.locator('#message'),
-//         getSubmitButton: (): Locator => this.page.locator('input[data-qa="submit-button"]'),
-//         getSuccessSubmissionMessage: (): Locator => this.page.locator('.contact-form .status')
-//     };

@@ -7,6 +7,6 @@ export default class HomePage extends BasePage {
     } 
 
     async loadHomePage(): Promise<void> {
-        await this.navigate('/');   // Используем метод из родителя или this.page.goto('/')
+        await this.navigate('/');   
     }
 }

@@ -14,8 +14,6 @@ test.describe("contact us page test", () => {
     test("verify contact us form submission", async ({ page }) => {
         const header = new Header(page);
 
-        // UPD: Метод теперь сам возвращает новую страницу. 
-        // Не нужно писать new ContactUsPage(page).
         const contactUsPage = await header.clickContactUsLink();
 
         await contactUsPage.fillNameField(contactUsData.name);

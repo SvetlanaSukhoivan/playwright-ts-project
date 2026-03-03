@@ -28,5 +28,4 @@ test.describe("contact us page test", () => {
         await expect(divText).toBeVisible();
         await expect(divText).toHaveText(contactUsData.successSubmissionMessage);
     });
-});
-
+})

@@ -15,7 +15,7 @@ export default class Header extends BasePage {
 
         this.locators = {
             getHomePageLink: () => this.page.getByText('Home'),
-            getProductsLink: () => this.page.getByText('Products'),
+            getProductsLink: () => this.page.locator('a[href="/products"]'),
             getContactUsLink: () => this.page.getByText('Contact us')
         };
     }

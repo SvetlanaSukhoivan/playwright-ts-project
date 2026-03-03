@@ -46,6 +46,8 @@ export default class ContactUsPage extends BasePage {
     }
 
     async clickSubmitButton(): Promise<this> {
+        await this.page.evaluate(() => window.scrollBy(0, 500));
+       // await this.locators.getSubmitButton().scrollIntoViewIfNeeded();
         await this.locators
             .getSubmitButton()
             .click();

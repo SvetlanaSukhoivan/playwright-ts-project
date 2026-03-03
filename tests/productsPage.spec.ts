@@ -15,8 +15,9 @@ test.describe("products page test", () => {
 
         const productPage = await header.clickProductLink();
 
-        const data = await productPage.getCategoriesText();
+        await page.locator('.left-sidebar h2').first().waitFor({ state: 'visible'});
 
+        const data = await productPage.getCategoriesText();
         expect(data).toEqual(arrCategories);
         
     });

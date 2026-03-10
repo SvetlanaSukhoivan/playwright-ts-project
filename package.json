@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,md}\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project.git"
@@ -17,7 +20,8 @@
   "homepage": "https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project#readme",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.10.1"
+    "@types/node": "^24.10.1",
+    "prettier": "^3.8.1"
   },
   "dependencies": {
     "dotenv": "^17.3.1"

@@ -7,12 +7,7 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 
-<<<<<<< Updated upstream
-example.spec.ts/
-
 # Environment Variables
-=======
->>>>>>> Stashed changes
 .env
 
 # Authentication State

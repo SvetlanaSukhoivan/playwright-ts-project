@@ -6,8 +6,21 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
 example.spec.ts/
+
+# Environment Variables
 .env
-vscode/
+
+# Authentication State
 .auth/
+
+# Logs
 logs/
+
+# VSCode settings
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.DS_Store

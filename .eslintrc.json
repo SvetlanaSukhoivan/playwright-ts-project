@@ -1,0 +1,26 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "playwright"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:playwright/recommended"
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+
+    "playwright/no-focused-test": "error",
+
+    "playwright/no-wait-for-timeout": "error",
+
+    "playwright/expect-expect": "error",
+
+    "playwright/no-conditional-in-test": "warn",
+
+    "playwright/missing-playwright-await": "error"
+  }
+}

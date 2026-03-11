@@ -1,5 +1,5 @@
 {
-  "name": "playwrigth-ts-project",
+  "name": "playwright-ts-project",
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project.git"
+    "url": "git+https://gitlab.com/SvetlanaSukhoivan/playwright-ts-project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project/issues"
+    "url": "https://gitlab.com/SvetlanaSukhoivan/playwright-ts-project/issues"
   },
-  "homepage": "https://gitlab.com/SvetlanaSukhoivan/playwrigth-ts-project#readme",
+  "homepage": "https://gitlab.com/SvetlanaSukhoivan/playwright-ts-project#readme",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.1",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "dotenv": "^17.3.1"

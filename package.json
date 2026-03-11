@@ -8,6 +8,7 @@
     "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
     "lint": "eslint \"**/*.ts\"",
     "lint:fix": "eslint \"**/*.ts\" --fix",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "repository": {

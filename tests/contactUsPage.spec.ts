@@ -16,9 +16,7 @@ test.describe('contact us page test', () => {
 
     const contactUsPage = await header.clickContactUsLink();
 
-    await contactUsPage.fillNameField(contactUsData.name);
-    await contactUsPage.fillEmailField(contactUsData.email);
-    await contactUsPage.fillMessageField(contactUsData.message);
+    await contactUsPage.fillEntireContactForm(contactUsData);
 
     await contactUsPage.acceptConfirmationPopup();
     await contactUsPage.clickSubmitButton();

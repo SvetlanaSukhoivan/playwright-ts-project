@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basePage';
-import { ContactUsForm } from '../helpers/testData';
+import { ContactUsForm } from '../types/contactUs';
 
 export default class ContactUsPage extends BasePage {
   public locators: {

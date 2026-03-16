@@ -1,10 +1,4 @@
-export interface ContactUsForm {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  successSubmissionMessage: string;
-}
+import { ContactUsForm } from '../types/contactUs';
 
 export const contactUsData: ContactUsForm = {
   name: 'my name',
@@ -15,3 +9,4 @@ export const contactUsData: ContactUsForm = {
 };
 
 export const arrCategories: string[] = ['WOMEN', 'MEN', 'KIDS'];
+// export const arrCategories: string[] = ['Women', 'Men', 'Kids'];

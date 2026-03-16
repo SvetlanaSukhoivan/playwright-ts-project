@@ -1,7 +1,7 @@
 export interface ContactUsForm {
   name: string;
   email: string;
-  subject?: string;
+  subject: string;
   message: string;
   successSubmissionMessage: string;
 }
@@ -9,6 +9,7 @@ export interface ContactUsForm {
 export const contactUsData: ContactUsForm = {
   name: 'my name',
   email: 'myemai@myemail.com',
+  subject: 'Test Subject',
   message: 'my message',
   successSubmissionMessage: 'Success! Your details have been submitted successfully.',
 };

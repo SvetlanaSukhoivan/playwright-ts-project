@@ -1,16 +1,11 @@
-import { test, expect } from '@playwright/test';
-import Header from '../pages/header';
-import HomePage from '../pages/homePage';
+import { test, expect } from '../fixtures/pageFixtures';
 
 test.describe('homepage test', () => {
-  test.beforeEach(async ({ page }) => {
-    const homePage = new HomePage(page);
+  test.beforeEach(async ({ homePage }) => {
     await homePage.loadHomePage();
   });
 
-  test('verify home page', async ({ page }) => {
-    const header = new Header(page);
-
+  test('verify home page', async ({ header }) => {
     const loc = header.locators.getHomePageLink();
     await expect(loc).toHaveCSS('color', 'rgb(255, 165, 0)');
   });

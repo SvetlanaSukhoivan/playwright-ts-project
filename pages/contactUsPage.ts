@@ -6,6 +6,7 @@ export default class ContactUsPage extends BasePage {
   public locators: {
     getInputFieldName: () => Locator;
     getInputFieldEmail: () => Locator;
+    getInputFieldSubject: () => Locator;
     getInputFieldMessage: () => Locator;
     getSubmitButton: () => Locator;
     getSuccessSubmissionMessage: () => Locator;
@@ -17,6 +18,7 @@ export default class ContactUsPage extends BasePage {
     this.locators = {
       getInputFieldName: () => this.page.getByPlaceholder('Name'),
       getInputFieldEmail: () => this.page.getByTestId('email'),
+      getInputFieldSubject: () => this.page.getByPlaceholder('Subject'),
       getInputFieldMessage: () => this.page.locator('#message'),
       getSubmitButton: () => this.page.getByTestId('submit-button'),
       getSuccessSubmissionMessage: () => this.page.locator('.contact-form .status'),
@@ -33,6 +35,11 @@ export default class ContactUsPage extends BasePage {
     return this;
   }
 
+  async fillSubjectField(subject: string): Promise<this> {
+    await this.locators.getInputFieldSubject().fill(subject);
+    return this;
+  }
+
   async fillMessageField(message: string): Promise<this> {
     await this.locators.getInputFieldMessage().fill(message);
     return this;
@@ -41,21 +48,22 @@ export default class ContactUsPage extends BasePage {
   async fillEntireContactForm(data: ContactUsForm): Promise<this> {
     await this.fillNameField(data.name);
     await this.fillEmailField(data.email);
+    await this.fillSubjectField(data.subject);
     await this.fillMessageField(data.message);
     return this;
   }
 
-  async acceptConfirmationPopup(): Promise<this> {
+  async submitContactForm(): Promise<this> {
     this.page.once('dialog', async (dialog) => {
       await dialog.accept();
     });
-    return this;
-  }
 
-  async clickSubmitButton(): Promise<this> {
-    await this.page.evaluate(() => window.scrollBy(0, 500));
-    // await this.locators.getSubmitButton().scrollIntoViewIfNeeded();
-    await this.locators.getSubmitButton().click();
+    await this.page.waitForLoadState('networkidle');
+
+    await this.locators.getSubmitButton().scrollIntoViewIfNeeded();
+
+    await this.locators.getSubmitButton().dispatchEvent('click');
+
     return this;
   }
 }

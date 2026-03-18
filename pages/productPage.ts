@@ -1,6 +1,5 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basePage';
-import { text } from 'stream/consumers';
 
 export default class ProductPage extends BasePage {
   public locators: {
@@ -21,9 +20,3 @@ export default class ProductPage extends BasePage {
     return texts.map((text) => text.toUpperCase());
   }
 }
-
-// async getCategoriesText(): Promise<string[]> {
-//         return await this.locators
-//             .getCategories()
-//             .allInnerTexts();
-//     }

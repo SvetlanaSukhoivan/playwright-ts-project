@@ -58,10 +58,10 @@ export default class ContactUsPage extends BasePage {
       await dialog.accept();
     });
 
+    // eslint-disable-next-line playwright/no-networkidle
     await this.page.waitForLoadState('networkidle');
 
     await this.locators.getSubmitButton().scrollIntoViewIfNeeded();
-
     await this.locators.getSubmitButton().dispatchEvent('click');
 
     return this;
